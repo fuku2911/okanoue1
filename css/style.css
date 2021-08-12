@@ -35,16 +35,14 @@ li {
   display: flex;
 }
 
-
-.nowrap{
-white-space: nowrap;
+.nowrap {
+  white-space: nowrap;
 }
 
 .footer {
   height: 100px;
   background: rgb(143, 143, 143);
 }
-
 
 .content {
   flex: 1;
@@ -62,34 +60,79 @@ white-space: nowrap;
   margin-bottom: 180px;
 }
 
+.main-title {
+  border: solid 1px #333;
+  padding: 30px;
+  margin-bottom: 50px;
+}
+.sub-title {
+  margin-bottom: 30px;
+}
+.sub-title-list {
+  margin-bottom: 30px;
+}
+
+/* .sub-title-img {
+  width: 100vh;
+  height: 100vh;
+  background-image: url("/img/manga.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  padding: 60px 80px;
+  margin-bottom: 180px;
+} */
+
+/*-------------------------------------------
+Location
+-------------------------------------------*/
+#location {
+  margin-top: 20px;
+}
+/* #location .location-img {
+  background-image: url(../img/location.jpg);
+  position: relative;
+} */
+#location .item-map {
+  /* グーグルマップをグレースケールにする */
+  filter: grayscale(1);
+  margin-bottom: 20px;
+}
+/* グーグルマップのサイズを設定 */
+#location .item-map iframe {
+  width: 100%;
+  height: 400px;
+  border: 0;
+}
+#location .item-info {
+  text-align: left;
+}
+#location .item-info p {
+  margin-bottom: 10px;
+}
 
 @media screen and (max-width: 640px) {
   /* スマホ-幅が640px以下の場合に適用するスタイル */
-  .pc-br{
+  .pc-br {
     display: none;
- }
-
+  }
 }
-
-
 
 @media screen and (min-width: 641px) {
   /* PC-幅が641px以上の場合に適用するスタイル */
-header#header{
-  width: 100%;
-  display: grid;
-  grid-template:
-  "left right" auto/23% 77%;
-}
-.left{
-  grid-area: left;
-}
-.right{
-  grid-area: right;
-}
+  header#header {
+    width: 100%;
+    display: grid;
+    grid-template: "left right" auto/23% 77%;
+  }
+  .left {
+    grid-area: left;
+  }
+  .right {
+    grid-area: right;
+  }
 
-
-  .left-in{
+  .left-in {
     text-align: center;
     margin: 0% 10%;
   }
@@ -98,26 +141,24 @@ header#header{
     /*display: flex;
      width: 252px;
      height: 140px;*/
-     justify-content: space-between;
-     align-items: center;
-     /* margin: 24px; */
-     padding: 2rem;
-     margin: 3rem 0%;
-     font-size: 2rem;
-     border: 0.5px solid;
-   }
+    justify-content: space-between;
+    align-items: center;
+    /* margin: 24px; */
+    padding: 2rem;
+    margin: 3rem 0%;
+    font-size: 2rem;
+    border: 0.5px solid;
+  }
 
-
-   .nav-container{
+  .nav-container {
     height: 168px;
     display: flex;
-   }
+  }
 
-   nav{
+  nav {
     margin: 0 3% 0 auto;
     display: flex;
-   }
-
+  }
 
   .pc-br {
     display: block;
@@ -132,7 +173,7 @@ header#header{
   #header li {
     font-size: 1.2rem;
     /* margin-top: 70px; */
-    margin-left:2rem;
+    margin-left: 2rem;
   }
   #header li a {
     color: #24292e;
@@ -140,26 +181,19 @@ header#header{
   #header li a:hover {
     opacity: 0.7;
   }
- 
- .main{
-   width: 54%;
-   margin: 0% auto;
- } 
 
- .service-list{
-   display: flex;
-   flex-wrap: wrap;
-   gap:80px 7%;
- }
+  .main {
+    width: 54%;
+    margin: 0% auto;
+  }
 
- ul.service-list li{
-   width: 40%;
+  .service-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 80px 7%;
+  }
 
- }
-
-
-
-
-
-
+  ul.service-list li {
+    width: 40%;
+  }
 }
