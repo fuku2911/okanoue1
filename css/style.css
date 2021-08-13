@@ -44,21 +44,117 @@ li {
   /* background: rgb(143, 143, 143); */
 }
 
-.content {
-  flex: 1;
-  width: 100%;
-  /* background: rgb(231, 189, 189); */
+
+
+/*-------------------------------------------
+Mainvisual
+-------------------------------------------*/
+#mainvisual {
+  height: 720px;
+  position: relative;
+  margin-bottom: 120px;
 }
-.content-img {
-  width: 100%;
-  min-height: 60vh;
-  background-image: url("/img/main-img.jpg");
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  padding: 60px 80px;
-  margin-bottom: 180px;
+/*
+テキストとボタンが画像の上に表示されるように「z-index」を設定
+*/
+#mainvisual .text {
+  position: absolute;
+  top: 280px;
+  left: 10%;
+  z-index: 10;
 }
+/*
+「text-shadow」で文字の輪郭に白い影をつけることで、
+文字が背景画像に埋もれないようにする
+*/
+#mainvisual .text .title {
+  font-size: 2.875rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-shadow: 0 4px 6px #fff;
+}
+
+/*
+メインビジュアル
+animationを使用して、画像をフェードイン、フェードアウトで切り替えを行う
+
+※画像のフェード切り替えは、CSSアニメーション以外にも
+jQueryのプラグインを使う等便利なやり方が色々ありますが、
+今回は学習のためにアニメーションを使用しています。
+*/
+#mainvisual .fade li {
+  width: 75%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* 最初は3枚の画像を非表示にしておく */
+  opacity: 0;
+  /*
+  アニメーションを実行
+  fade：下で定義している「@keyframes fade」を実行
+  15s：「@keyframes fade」の処理を15秒かけて実行
+  infinite：アニメーションの処理を無限に繰り返す
+  */
+  animation: fade 15s infinite;
+}
+/*
+1枚目の画像のアニメーション実行タイミングを設定
+「animation-delay: 0s;」ですぐに実行
+*/
+#mainvisual .fade li:nth-child(1) {
+  animation-delay: 0s;
+}
+/*
+2枚目の画像のアニメーション実行タイミングを設定
+「animation-delay: 5s;」で5秒後に実行
+*/
+#mainvisual .fade li:nth-child(2) {
+  animation-delay: 5s;
+}
+/*
+3枚目の画像のアニメーション実行タイミングを設定
+「animation-delay: 10s;」で10秒後に実行
+*/
+#mainvisual .fade li:nth-child(3) {
+  animation-delay: 10s;
+}
+#mainvisual .fade li img {
+  width: 100%;
+  height: 720px;
+  object-fit: cover;
+}
+
+
+/*
+アニメーション処理
+上の「animation」で15sを指定しているので下記の処理を15秒かけて実行
+0%が0秒を表し、100%が15秒後を表す。
+
+0%の「opacity: 0;」で非表示の状態からスタートし、
+15%になるまでの間に少しづつ画像を表示（フェードイン）させる。
+そこから30%の時点までは画像を表示させたままの状態を維持し、
+45%の時点に向けて画像を非表示（フェードアウト）する。
+そこから100%まで非表示の状態を維持する。
+*/
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
 
 .main-title {
   border: solid 1px #333;
@@ -87,6 +183,8 @@ li {
 .service-list {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 80px 7%;
 }
 
 /*-------------------------------------------
@@ -207,12 +305,11 @@ access-map
 
   .service-list {
     display: flex;
-    flex-wrap: wrap;
-    gap: 80px 7%;
   }
 
   ul.service-list li {
     width: 40%;
+
   }
 }
 }
