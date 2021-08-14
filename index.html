@@ -6,10 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/jquery.inview.min.js"></script>
+    <script src="js/main.js"></script>
     <title>丘の上のデジタル工房</title>
   </head>
+
   <body>
     <div class="wrapper">
+
       <header id="header">
         <div class="left">
           <div class="left-in">
@@ -27,7 +32,25 @@
           </div>
         </div>
 
-        <div class="right">
+      <!-- ハンバーガ―メニュー -->
+      <div id="header-hamburger">
+        <nav id="navi">
+          <ul class="menu">
+            <li><a href="#">パソコンサポート</a></li>
+            <li><a href="#">ホームページ制作</a></li>
+            <li><a href="#">パソコン教室</a></li>
+            <li><a href="#">プログラミング教室</a></li>
+          </ul>
+        </nav>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      </header>
+
+        <!-- <div class="right">
           <div class="nav-container">
             <nav class="nav">
               <ul>
@@ -38,7 +61,7 @@
                 <li><a href="#contact">お問い合わせ</a></li>
               </ul>
             </nav>
-          </div>
+          </div> -->
 
           <!-- メインビジュアル -->
           <div id="mainvisual">

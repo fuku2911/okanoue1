@@ -44,102 +44,109 @@ li {
   /* background: rgb(143, 143, 143); */
 }
 
-
 /*==================================================
 枠線が伸びて出現
 ===================================*/
 
 /*枠線が伸びて出現*/
 
-.lineTrigger{
+.lineTrigger {
   position: relative; /* 枠線が書かれる基点*/
-  opacity:0;
+  opacity: 0;
 }
 
-.lineTrigger.lineanime{
-	animation-name:lineAnimeBase;
-	animation-duration:1s;
-	animation-fill-mode:forwards;
+.lineTrigger.lineanime {
+  animation-name: lineAnimeBase;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
-@keyframes lineAnimeBase{
+@keyframes lineAnimeBase {
   from {
-    opacity:0;
+    opacity: 0;
   }
 
   to {
-    opacity:1;
-}
+    opacity: 1;
+  }
 }
 
 /*上下線*/
 .lineTrigger::before,
-.lineTrigger::after{
+.lineTrigger::after {
   position: absolute;
-  content: '';
-  width:0;
-  height:1px;
-  background:#333;/* 枠線の色*/
+  content: "";
+  width: 0;
+  height: 1px;
+  background: #333; /* 枠線の色*/
 }
 
 /*左右線*/
 .line2::before,
-.line2::after{
+.line2::after {
   position: absolute;
-  content: '';
+  content: "";
   width: 1px;
-  height:0;
-  background:#333;/* 枠線の色*/
+  height: 0;
+  background: #333; /* 枠線の色*/
 }
 
 /*上線*/
 .lineTrigger::before {
-	top:0;
-	left:0;
+  top: 0;
+  left: 0;
 }
 
 .lineTrigger.lineanime::before {
-	animation: lineAnime .5s linear 0s forwards;/*表示されて0秒後に上線が0.5秒かけて表示*/
+  animation: lineAnime 0.5s linear 0s forwards; /*表示されて0秒後に上線が0.5秒かけて表示*/
 }
 
 /*右線*/
-.line2::before{
-	top:0;
-	right:0;
+.line2::before {
+  top: 0;
+  right: 0;
 }
 
 .lineTrigger.lineanime .line2::before {
-	animation: lineAnime2 .5s linear .5s forwards;/*表示されて0.5秒後に右線が0.5秒かけて表示*/
+  animation: lineAnime2 0.5s linear 0.5s forwards; /*表示されて0.5秒後に右線が0.5秒かけて表示*/
 }
 
 /*下線*/
 .lineTrigger::after {
-	bottom:0;
-	right:0;
+  bottom: 0;
+  right: 0;
 }
 
 .lineTrigger.lineanime::after {
-	animation: lineAnime .5s linear 1s forwards;/*表示されて1秒後に下線が0.5秒かけて表示*/
+  animation: lineAnime 0.5s linear 1s forwards; /*表示されて1秒後に下線が0.5秒かけて表示*/
 }
 
 /*左線*/
-.line2::after{
-	bottom:0;
-	left:0;
+.line2::after {
+  bottom: 0;
+  left: 0;
 }
 
 .lineTrigger.lineanime .line2::after {
-	animation: lineAnime2 .5s linear 1.5s forwards;/*表示されて1.5秒後に左線が0.5秒かけて表示*/
+  animation: lineAnime2 0.5s linear 1.5s forwards; /*表示されて1.5秒後に左線が0.5秒かけて表示*/
 }
 
 @keyframes lineAnime {
-	0% {width:0%;}
-    100%{width:100%;}
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 @keyframes lineAnime2 {
-	0% {height:0%;}
-    100%{height:100%;}
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
 }
 
 /*枠線内側の要素*/
@@ -153,6 +160,109 @@ li {
 	0% {opacity:0;}
     100% {opacity:1;}
 } */
+
+/*-------------------------------------------
+ヘッダー
+-------------------------------------------*/
+#header-hamburger {
+  height: 100px;
+  padding: 40px 0 0 50px;
+}
+
+/*
+ハンバーガ―メニュー
+*/
+.hamburger {
+  width: 100px;
+  height: 100px;
+  background-color: #338ce8;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.hamburger:hover {
+  opacity: 0.7;
+}
+/* ハンバーガーメニューの線の設定（メニューが閉じている時） */
+.hamburger span {
+  width: 50px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  left: 25px;
+  transition: 0.3s ease-in-out;
+}
+/* 1本目の線の位置を設定 */
+.hamburger span:nth-child(1) {
+  top: 36px;
+}
+/* 2本目の線の位置を設定 */
+.hamburger span:nth-child(2) {
+  top: 50px;
+}
+/* 3本目の線の位置を設定 */
+.hamburger span:nth-child(3) {
+  top: 64px;
+}
+/*
+ハンバーガーメニューの線の設定（メニューが開いている時）
+1本目の線を-45度回転
+*/
+.hamburger.active span:nth-child(1) {
+  top: 47px;
+  left: 25px;
+  background: #fff;
+  transform: rotate(-45deg);
+}
+/* 2本目と3本目は重ねて45度回転 */
+.hamburger.active span:nth-child(2),
+.hamburger.active span:nth-child(3) {
+  top: 47px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+/*
+メニューの設定
+最初は閉じている状態なので、「opacity: 0;」「visibility: hidden;」
+で要素を非表示にしておく
+*/
+#navi {
+  width: 20%;
+  height: 100vh;
+  background-color: #338ce8;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 20;
+  opacity: 0;
+  text-align: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  visibility: hidden;
+}
+/*
+ハンバーガーメニューがクリックされた際に、jQueryで#naviにactiveクラスを追加して、
+メニューを表示させる。
+*/
+#navi.active {
+  opacity: 0.8;
+  visibility: visible;
+}
+
+#navi .menu {
+  margin: 100px auto;
+  flex-direction: column;
+}
+#navi .menu li {
+  margin-bottom: 20px;
+}
+#navi .menu a {
+  color: #fff;
+  font-weight: bold;
+}
 
 /*-------------------------------------------
 Mainvisual
@@ -232,7 +342,6 @@ jQueryのプラグインを使う等便利なやり方が色々ありますが�
   object-fit: cover;
 }
 
-
 /*
 アニメーション処理
 上の「animation」で15sを指定しているので下記の処理を15秒かけて実行
@@ -262,8 +371,6 @@ jQueryのプラグインを使う等便利なやり方が色々ありますが�
   }
 }
 
-
-
 .main-title {
   border: solid 1px #333;
   padding: 30px;
@@ -275,18 +382,6 @@ jQueryのプラグインを使う等便利なやり方が色々ありますが�
 .sub-title-list {
   margin-bottom: 30px;
 }
-
-/* .sub-title-img {
-  width: 100vh;
-  height: 100vh;
-  background-image: url("/img/manga.png");
-  position: relative;
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  padding: 60px 80px;
-  margin-bottom: 180px;
-} */
 
 .service-list {
   display: flex;
@@ -323,10 +418,9 @@ access-map
 /*-------------------------------------------
 フッター
 -------------------------------------------*/
-.footer-logo{
+.footer-logo {
   height: 50px;
   margin: 20px;
-
 }
 
 .footer {
@@ -334,13 +428,88 @@ access-map
   text-align: center;
 }
 
+
+
+
 /*-------------------------------------------
+SP
+-------------------------------------------*/
 
 @media screen and (max-width: 640px) {
   /* スマホ-幅が640px以下の場合に適用するスタイル */
-  .pc-br {
-    display: none;
+.pc-br {
+  display: none;
+}
+
+
+/* ハンバーガー */
+/* ハンバーガ―メニュー */
+  .hamburger {
+    width: 75px;
+    height: 75px;
   }
+  .hamburger span {
+    width: 35px;
+    left: 21px;
+  }
+  .hamburger span:nth-child(1) {
+    top: 26px;
+  }
+  .hamburger span:nth-child(2) {
+    top: 37px;
+  }
+  .hamburger span:nth-child(3) {
+    top: 48px;
+  }
+  .hamburger.active span:nth-child(1) {
+    top: 37px;
+    left: 21px;
+  }
+  .hamburger.active span:nth-child(2),
+  .hamburger.active span:nth-child(3) {
+    top: 37px;
+  }
+  #navi .logo {
+    top: 25px;
+    left: 25px;
+  }
+  #navi .menu {
+    margin-top: 110px;
+  }
+
+  #navi {
+    width: 50%;
+  }
+
+/*-------------------------------------------
+  Mainvisual
+  -------------------------------------------*/
+  #mainvisual {
+    height: 490px;
+    margin-bottom: 80px;
+  }
+  #mainvisual .fade li {
+    width: 100%;
+  }
+  #mainvisual .fade li img {
+    height: 300px;
+  }
+  #mainvisual .text {
+    /* 両端に16pxづつ余白を作る */
+    width: calc(100% - 32px);
+    top: 310px;
+    left: 16px;
+  }
+  #mainvisual .text .title {
+    font-size: 1.75rem;
+    margin-bottom: 10px;
+  }
+  #mainvisual .text .btn {
+    width: 100%;
+  }
+
+}
+
 
 @media screen and (min-width: 641px) {
   /* PC-幅が641px以上の場合に適用するスタイル */
@@ -417,6 +586,5 @@ access-map
 
   ul.service-list li {
     width: 40%;
-
   }
 }
